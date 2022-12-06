@@ -34,37 +34,28 @@ function drawSnake() {
 
 function collisionCheck() {
 	if (x > canvas.width - bodyLength) {
-		document.getElementById('score').innerHTML = "GAME OVER";
 		x = canvas.width - bodyLength;
 		gameOver = "GAME OVER";
-		document.getElementById('restart').removeAttribute("hidden");
-	}
-	if (x < 0) {
-		document.getElementById('score').innerHTML = "GAME OVER";
+	} else if (x < 0) {
 		x = 0;
 		gameOver = "GAME OVER";
-		document.getElementById('restart').removeAttribute("hidden");
-	}
-	if (y > canvas.height - bodyLength) {
-		document.getElementById('score').innerHTML = "GAME OVER";
+	} else if (y > canvas.height - bodyLength) {
 		y = canvas.height - bodyLength;
 		gameOver = "GAME OVER";
-		document.getElementById('restart').removeAttribute("hidden");
-	}
-	if (y < 0) {
-		document.getElementById('score').innerHTML = "GAME OVER";
+	} else if (y < 0) {
 		y = 0;
 		gameOver = "GAME OVER";
-		document.getElementById('restart').removeAttribute("hidden");
 	}
 	for (let i = 0; i < snake.length; ++i) {
 		if (x === snake[i].x && y === snake[i].y) {
 			gameOver = "GAME OVER";
-			document.getElementById('score').innerHTML = "GAME OVER";
-			document.getElementById('restart').removeAttribute("hidden");
 			xSpeed = 0;
 			ySpeed = 0;
 		}
+	}
+	if (gameOver === "GAME OVER") {
+		document.getElementById('score').innerHTML = "GAME OVER";
+		document.getElementById('restart').removeAttribute("hidden");
 	}
 }
 
